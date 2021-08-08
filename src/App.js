@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 // 時間格式
 import moment from 'moment';
 //---------------------------------------
+import long_logo from 'img/long_logo.svg';
+//---------------------------------------
 // field type
 import typeInfo, { itemTypeInfoArr } from 'info/typeInfo';
 //---------------------------------------
@@ -10,14 +12,6 @@ import ArguSection from 'component/ArguSection';
 //---------------------------------------
 // CSS in JS
 import styled from '@emotion/styled';
-// CSS
-const ArguGetterWrap = styled.div`
-  padding-bottom: 76px;
-  .hr-dark {
-    border-bottom: 2px solid #ccc;
-    margin: 16px 0 16px 0;
-  }
-`;
 
 //---------------------------------------
 function App() {
@@ -109,7 +103,9 @@ function App() {
   return (
     <>
       <ArguGetterWrap className="container">
-        <div style={{ height: '50px' }}></div>
+        <div className="long-logo-wrap">
+          <img src={long_logo} alt="" />
+        </div>
         {itemTypeInfoArr.map((item, index) => {
           return (
             <ArguItem
@@ -151,5 +147,26 @@ function App() {
     </>
   );
 }
+
+// CSS
+const ArguGetterWrap = styled.div`
+  padding-bottom: 76px;
+  .long-logo-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    ${'' /* background-color: #faf; */}
+    img {
+      width: 210px;
+      object-fit: contain;
+    }
+  }
+
+  .hr-dark {
+    border-bottom: 2px solid #ccc;
+    margin: 16px 0 16px 0;
+  }
+`;
 
 export default App;

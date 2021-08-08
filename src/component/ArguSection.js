@@ -141,6 +141,7 @@ const ArguSectionWrap = styled.div`
     svg {
       margin-left: 10px;
       margin-top: -3px;
+      color: #dc3545;
     }
   }
   .am-section-content {
@@ -162,6 +163,7 @@ const ArguSectionWrap = styled.div`
       transition: 0.2s;
       margin-bottom: 1rem;
       position: relative;
+      color: #dc3545;
     }
 
     .point-item {

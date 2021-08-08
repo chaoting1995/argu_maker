@@ -24,3 +24,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * 完成新增、刪除功能
 * 完成 textarea 響應式高度
 * 完成重點欄位基本外觀、下拉選單
+* 完成基本功能
+* 完成 gh-pages 部署
+
+- 開發計畫
+
+* 自動切割文件
+* 匯出 pdf 檔
+* navbar
+* PWA 設定再升級
+* RWD
+* GA,hot drop
+* 雲端 excel

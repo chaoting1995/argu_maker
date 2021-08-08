@@ -1,6 +1,6 @@
 {
   "name": "argu_maker",
-  "homepage": "https://github.com/chaoting1995.github.io/argu_maker",
+  "homepage": "argu_maker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -185,6 +185,7 @@ const ArguMakerWrap = styled.div`
 
   select {
     text-align-last: center;
+    font-size: initial;
 
     border: none;
     appearance: none;

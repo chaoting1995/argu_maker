@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chaoting1995.github.io/argu_maker/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/chaoting1995.github.io/argu_maker/static/js/main.7f97d27b.chunk.js",
-    "main.js.map": "/chaoting1995.github.io/argu_maker/static/js/main.7f97d27b.chunk.js.map",
+    "main.js": "/chaoting1995.github.io/argu_maker/static/js/main.eb2a8725.chunk.js",
+    "main.js.map": "/chaoting1995.github.io/argu_maker/static/js/main.eb2a8725.chunk.js.map",
     "runtime-main.js": "/chaoting1995.github.io/argu_maker/static/js/runtime-main.0341c4d8.js",
     "runtime-main.js.map": "/chaoting1995.github.io/argu_maker/static/js/runtime-main.0341c4d8.js.map",
     "static/css/2.d933f860.chunk.css": "/chaoting1995.github.io/argu_maker/static/css/2.d933f860.chunk.css",
@@ -26,6 +26,6 @@
     "static/css/2.d933f860.chunk.css",
     "static/js/2.23a6c58a.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.7f97d27b.chunk.js"
+    "static/js/main.eb2a8725.chunk.js"
   ]
 }

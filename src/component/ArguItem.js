@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React, { useState, useRef } from 'react';
 // CSS in JS
 import styled from '@emotion/styled';
 // 按鈕音效
@@ -11,7 +10,8 @@ import { FaPlus, FaListOl, FaRegTrashAlt } from 'react-icons/fa';
 
 function ArguItem(props) {
   const [nowSelect, setNowSelect] = useState('');
-  const { typeInfo, fileInfo, setFileInfo } = props;
+  const { typeInfo, fileInfo, setFileInfo, handleCreate, handleDeleteShow } =
+    props;
   const {
     field,
     itemType,
@@ -19,11 +19,13 @@ function ArguItem(props) {
     options,
     content,
     placeholder,
-    class_file,
     class_label,
     hr,
+    isAddBtn,
+    isDelBtn,
+    isSortBtn,
   } = typeInfo;
-
+  const refTextarea = useRef(null);
   //------------
 
   return (
@@ -32,7 +34,7 @@ function ArguItem(props) {
         {/* normal */}
         {itemType[0] === 'text' && (
           <label
-            className={`col-2 col-form-label rounded col-form-label-sm text-center ${class_file} ${class_label}`}
+            className={`col-2 col-form-label rounded col-form-label-sm text-center ${class_label}`}
             htmlFor={field}
           >
             {label}
@@ -76,9 +78,10 @@ function ArguItem(props) {
             </div>
           )}
 
-          {/*  多行文字輸入框 */}
+          {/* 多行文字輸入框 */}
           {itemType[1] === 'textarea' && (
             <textarea
+              ref={refTextarea}
               className="form-control form-control-sm am-content"
               id={field}
               rows="1"
@@ -87,37 +90,43 @@ function ArguItem(props) {
               onChange={(e) => {
                 fileInfo &&
                   setFileInfo((pre) => ({ ...pre, [[field]]: e.target.value }));
+                refTextarea.current.style.height = 'auto';
+                refTextarea.current.style.height =
+                  refTextarea.current.scrollHeight + 'px';
               }}
             />
           )}
 
-          {/* 多行文字輸入框 + select 版本
-          {field === 'position' && itemType[1] === 'textarea' && (
-            <textarea
-              className="form-control form-control-sm am-content"
-              id={field}
-              rows="1"
-              placeholder={placeholder}
-              value={fileInfo && fileInfo[field]}
-              onChange={(e) => {
-                fileInfo &&
-                  setFileInfo((pre) => ({ ...pre, [[field]]: e.target.value }));
-              }}
-            />
-          )} */}
-
           {/*  功能鍵 */}
           {itemType[1] === 'buttons' && (
             <>
-              <div className="pre-btn" onClick={() => handleAudioClick()}>
-                <FaPlus />
-              </div>
-              <div className="pre-btn" onClick={() => handleAudioClick()}>
-                <FaListOl />
-              </div>
-              <div className="pre-btn" onClick={() => handleAudioClick()}>
-                <FaRegTrashAlt />
-              </div>
+              {isAddBtn && (
+                <div
+                  className="btn-wrap"
+                  onClick={() => {
+                    handleAudioClick();
+                    handleCreate();
+                  }}
+                >
+                  <FaPlus />
+                </div>
+              )}
+              {isSortBtn && (
+                <div className="btn-wrap" onClick={() => handleAudioClick()}>
+                  <FaListOl />
+                </div>
+              )}
+              {isDelBtn && (
+                <div
+                  className="btn-wrap"
+                  onClick={() => {
+                    handleAudioClick();
+                    handleDeleteShow();
+                  }}
+                >
+                  <FaRegTrashAlt />
+                </div>
+              )}
             </>
           )}
         </div>
@@ -131,6 +140,7 @@ function ArguItem(props) {
     </>
   );
 }
+
 // CSS
 const ArguMakerWrap = styled.div`
   .file {
@@ -145,7 +155,13 @@ const ArguMakerWrap = styled.div`
   input,
   textarea {
     border: 0;
+    font-size: initial;
   }
+  textarea {
+    resize: none;
+    overflow: hidden;
+  }
+
   select {
     padding-left: 15px;
     padding-right: 0px;
@@ -167,32 +183,37 @@ const ArguMakerWrap = styled.div`
     background-color: #888;
     color: #fff;
   }
-  .label-level-2 {
+  .label-level-3 {
     background-color: #bbb;
   }
-  .label-level-3 {
+  .label-level-4 {
     background-color: #eee;
   }
 
-  .pre-btn {
-    font-size: 20px;
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
     width: 32px;
     height: 32px;
     margin-left: 25px;
-    margin-top: -4px;
-    transition: 0.3s;
+    transition: 0.2s;
     position: relative;
     cursor: pointer;
+    & > svg {
+      z-index: 1;
+    }
     &:after {
       content: '';
       position: absolute;
-      top: 1px;
-      left: -6px;
+      top: 0px;
+      left: 0px;
       width: 32px;
       height: 32px;
-      background-color: #eee;
+      background-color: #ddd;
       border-radius: 999px;
-      z-index: -1;
+      z-index: 0;
       transition: 0.2s;
       transform-origin: center;
     }

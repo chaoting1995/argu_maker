@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 // CSS in JS
 import styled from '@emotion/styled';
-// 按鈕音效
-import { handleAudioClick } from 'utils/handleAudio';
 // Icon
 import { FaRegTrashAlt } from 'react-icons/fa';
+// 按鈕音效
+import { handleAudioClick } from '../utils/handleAudio';
 
 //---------------------------------------
-import ArguItem from 'component/ArguItem';
+import ArguItem from '../component/ArguItem';
 //---------------------------------------
 // field type
-import typeInfo from 'info/typeInfo';
+import typeInfo from '../info/typeInfo';
 const { pointBtn } = typeInfo;
 //---------------------------------------
 

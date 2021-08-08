@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 // 時間格式
 import moment from 'moment';
 //---------------------------------------
-import long_logo from 'img/long_logo.svg';
+import long_logo from './img/long_logo.svg';
 //---------------------------------------
 // field type
-import typeInfo, { itemTypeInfoArr } from 'info/typeInfo';
+import typeInfo, { itemTypeInfoArr } from './info/typeInfo';
 //---------------------------------------
-import ArguItem from 'component/ArguItem';
-import ArguSection from 'component/ArguSection';
+import ArguItem from './component/ArguItem';
+import ArguSection from './component/ArguSection';
 //---------------------------------------
 // CSS in JS
 import styled from '@emotion/styled';

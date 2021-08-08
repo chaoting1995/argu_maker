@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react';
 // CSS in JS
 import styled from '@emotion/styled';
 // 按鈕音效
-import { handleAudioClick } from 'utils/handleAudio';
+import { handleAudioClick } from '../utils/handleAudio';
 // Icon
 import { FaPlus, FaListOl, FaRegTrashAlt } from 'react-icons/fa';
-import select_icon from 'img/select_icon.svg';
+import select_icon from '../img/select_icon.svg';
 //---------------------------------------
 
 function ArguItem(props) {

@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/argu_maker/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/argu_maker/static/js/main.2de0831a.chunk.js",
-    "main.js.map": "/argu_maker/static/js/main.2de0831a.chunk.js.map",
+    "main.js": "/argu_maker/static/js/main.8b016cd8.chunk.js",
+    "main.js.map": "/argu_maker/static/js/main.8b016cd8.chunk.js.map",
     "runtime-main.js": "/argu_maker/static/js/runtime-main.17e614bd.js",
     "runtime-main.js.map": "/argu_maker/static/js/runtime-main.17e614bd.js.map",
     "static/css/2.d933f860.chunk.css": "/argu_maker/static/css/2.d933f860.chunk.css",
@@ -26,6 +26,6 @@
     "static/css/2.d933f860.chunk.css",
     "static/js/2.23a6c58a.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.2de0831a.chunk.js"
+    "static/js/main.8b016cd8.chunk.js"
   ]
 }

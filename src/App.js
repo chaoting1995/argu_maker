@@ -30,44 +30,46 @@ function App() {
     side: '',
   });
 
-  //刪除按鈕的顯示狀態
-  const [showDelSec, setShowDelSec] = useState(false);
-  const [showDelPoint, setShowDelPoint] = useState(false);
-  // point 選單狀態
-  const [pointLabel, setPointLabel] = useState('重點');
   // 段落
   const [article, setArticle] = useState([
     {
       id: 1, //timestamp
       content: '',
-      point: [
+      points: [
         {
           id: 1, //timestamp
-          title: '重點', //動態
           content: '',
+          typeInfoKey: 'point_1',
         },
       ],
     },
   ]);
+
+  //刪除按鈕的顯示狀態
+  const [showDelSec, setShowDelSec] = useState(false);
+
   //---------------------------------------
   const { sectionBtn } = typeInfo;
   //---------------------------------------
 
   useEffect(() => {
-    let AM_fileInfo = JSON.parse(localStorage.getItem('AM_fileInfo'));
-    if (AM_fileInfo) setFileInfo(AM_fileInfo);
+    let AM_data = JSON.parse(localStorage.getItem('AM_data'));
+    if (AM_data) {
+      setFileInfo(AM_data.fileInfo);
+      setArticle(AM_data.article);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('AM_fileInfo', JSON.stringify(fileInfo));
-  }, [fileInfo]);
+    localStorage.setItem('AM_data', JSON.stringify({ fileInfo, article }));
+  }, [fileInfo, article]);
 
   //---------------------------------------
   function handleAddSection() {
     const newSection = {
-      id: new Date(), //timestamp
+      id: +new Date(), //timestamp
       content: '',
-      point: [],
+      points: [],
     };
     setArticle((pre) => [...pre, newSection]);
   }
@@ -78,7 +80,31 @@ function App() {
     const newArticle = article.filter((item) => item.id !== SectionID);
     setArticle(newArticle);
   }
+  useEffect(() => {
+    if (!article.length) setShowDelSec(false);
+  }, [article]);
+  //---------------------------------------
+  function handleAddPoint(sectionID, typeInfoKey) {
+    let newArticle = JSON.parse(JSON.stringify(article));
+    const newPoint = {
+      id: +new Date(), //timestamp
+      content: '',
+      typeInfoKey: typeInfoKey,
+    };
+    newArticle.forEach((item) => {
+      if (item.id === sectionID) item.points.push(newPoint);
+    });
+    setArticle(newArticle);
+  }
 
+  function handleDelPoint(sectionID, pointID) {
+    let newArticle = JSON.parse(JSON.stringify(article));
+    newArticle.forEach((item) => {
+      if (item.id === sectionID)
+        item.points = item.points.filter((item) => item.id !== pointID);
+    });
+    setArticle(newArticle);
+  }
   //---------------------------------------
   return (
     <>
@@ -101,13 +127,13 @@ function App() {
             <ArguSection
               key={index}
               index={index}
+              sectionID={item.id}
               article={article}
               setArticle={setArticle}
               showDelSec={showDelSec}
-              showDelSec={showDelSec}
-              showDelPoint={showDelPoint}
-              setShowDelPoint={setShowDelPoint}
               handleDelSection={() => handleDelSection(item.id)}
+              handleAddPoint={(itemType) => handleAddPoint(item.id, itemType)}
+              handleDelPoint={handleDelPoint}
             />
           );
         })}
@@ -116,10 +142,10 @@ function App() {
           typeInfo={sectionBtn}
           fileInfo={fileInfo}
           setFileInfo={setFileInfo}
-          showDelSec={showDelSec}
+          showDel={showDelSec}
           setShowDelSec={setShowDelSec}
           handleCreate={handleAddSection}
-          handleDeleteShow={handleDelSectionShow}
+          handleDeleteShow={article.length ? handleDelSectionShow : () => {}}
         />
       </ArguGetterWrap>
     </>

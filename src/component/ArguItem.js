@@ -5,13 +5,21 @@ import styled from '@emotion/styled';
 import { handleAudioClick } from 'utils/handleAudio';
 // Icon
 import { FaPlus, FaListOl, FaRegTrashAlt } from 'react-icons/fa';
-
+import select_icon from 'img/select_icon.svg';
 //---------------------------------------
 
 function ArguItem(props) {
   const [nowSelect, setNowSelect] = useState('');
-  const { typeInfo, fileInfo, setFileInfo, handleCreate, handleDeleteShow } =
-    props;
+  const {
+    typeInfo,
+    fileInfo,
+    setFileInfo,
+    handleCreate,
+    handleDeleteShow,
+    showDel,
+    setParentSelect,
+    handleTextareaContent,
+  } = props;
   const {
     field,
     itemType,
@@ -24,13 +32,18 @@ function ArguItem(props) {
     isAddBtn,
     isDelBtn,
     isSortBtn,
+    isInputBorder,
   } = typeInfo;
   const refTextarea = useRef(null);
   //------------
 
   return (
     <>
-      <ArguMakerWrap className="form-group row  ml-0">
+      <ArguMakerWrap
+        className="form-group row ml-0 font-weight-bold"
+        isInputBorder={isInputBorder}
+        select_icon={select_icon}
+      >
         {/* normal */}
         {itemType[0] === 'text' && (
           <label
@@ -42,17 +55,23 @@ function ArguItem(props) {
         )}
         {/* select */}
         {itemType[0] === 'select' && (
-          <select
-            className={`col-2 col-form-label col-form-label-sm form-control form-control-sm ${class_label}`}
-            value={nowSelect}
-            onChange={(e) => setNowSelect(e.target.value)}
-          >
-            {options.map(({ value, label, placeholder }, index) => (
-              <option key={index} hidden={!value} value={value}>
-                {value ? label : placeholder}
-              </option>
-            ))}
-          </select>
+          <>
+            <select
+              className={`col-2 col-form-label col-form-label-sm form-control form-control-sm ${class_label}`}
+              value={nowSelect}
+              onChange={(e) => {
+                setNowSelect(e.target.value);
+                setParentSelect && setParentSelect(e.target.value);
+              }}
+            >
+              {options.map(({ value, label, placeholder }, index) => (
+                <option key={index} hidden={!value} value={value}>
+                  {value ? label : placeholder}
+                </option>
+              ))}
+            </select>
+            {/* <img src={select_icon} alt="" /> */}
+          </>
         )}
 
         <div className="col-10  d-flex align-items-center">
@@ -90,6 +109,8 @@ function ArguItem(props) {
               onChange={(e) => {
                 fileInfo &&
                   setFileInfo((pre) => ({ ...pre, [[field]]: e.target.value }));
+                handleTextareaContent && handleTextareaContent(e.target.value);
+
                 refTextarea.current.style.height = 'auto';
                 refTextarea.current.style.height =
                   refTextarea.current.scrollHeight + 'px';
@@ -102,7 +123,7 @@ function ArguItem(props) {
             <>
               {isAddBtn && (
                 <div
-                  className="btn-wrap"
+                  className="btn-wrap icon-plus"
                   onClick={() => {
                     handleAudioClick();
                     handleCreate();
@@ -118,7 +139,7 @@ function ArguItem(props) {
               )}
               {isDelBtn && (
                 <div
-                  className="btn-wrap"
+                  className={`btn-wrap ${showDel && 'text-danger'}`}
                   onClick={() => {
                     handleAudioClick();
                     handleDeleteShow();
@@ -154,7 +175,7 @@ const ArguMakerWrap = styled.div`
   }
   input,
   textarea {
-    border: 0;
+    border: ${({ isInputBorder }) => (isInputBorder ? 1 : 0)};
     font-size: initial;
   }
   textarea {
@@ -163,13 +184,17 @@ const ArguMakerWrap = styled.div`
   }
 
   select {
-    padding-left: 15px;
-    padding-right: 0px;
+    text-align-last: center;
 
     border: none;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
+
+    background-image: url(${select_icon});
+    background-position: 90%;
+    background-repeat: no-repeat;
+    background-size: 7px;
   }
   select::-ms-expand {
     display: none;
@@ -188,6 +213,9 @@ const ArguMakerWrap = styled.div`
   }
   .label-level-4 {
     background-color: #eee;
+  }
+  .bg-cus-purple {
+    background-color: #7c58bb;
   }
 
   .btn-wrap {

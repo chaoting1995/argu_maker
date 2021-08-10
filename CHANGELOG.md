@@ -20,12 +20,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - 稿子段落卡
 
-* 完成資料狀態設定
-* 完成新增、刪除功能
-* 完成 textarea 響應式高度
-* 完成重點欄位基本外觀、下拉選單
-* 完成基本功能
-* 完成 gh-pages 部署
+  - 完成資料狀態設定
+  - 完成新增、刪除功能
+  - 完成 textarea 響應式高度
+  - 完成重點欄位基本外觀、下拉選單
+  - 完成基本功能
+  - 完成 gh-pages 部署
 
 - 開發計畫
 
@@ -39,8 +39,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 2021-08-10
 
-### Changed & Removed
+### Changed & Removed & fixed
 
 - 修改預設語言 `<html lang="tw">`
 - 修改垃圾桶樣式，做出 point,section 的區隔
 - 移除 points 的例證
+- 修復 section&point 的資料記憶問題

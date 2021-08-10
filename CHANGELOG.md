@@ -53,3 +53,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - 添加 ScrollToTop 頁面切換時，要用捲軸讓頁面回到最上方
 - 添加 Menubar
 - 修復 初次載入時，無正確觸發 textarea 響應式高度的問題
+- 添加 段落字數小計

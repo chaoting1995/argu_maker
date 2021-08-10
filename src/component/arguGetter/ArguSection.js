@@ -52,6 +52,7 @@ function ArguSection(props) {
   useEffect(() => {
     refTextarea.current.style.height = 'auto';
     refTextarea.current.style.height = refTextarea.current.scrollHeight + 'px';
+    // eslint-disable-next-line
   }, [refTextarea.current]);
   //---------------------------------------
   return (
@@ -59,7 +60,7 @@ function ArguSection(props) {
       <ArguSectionWrap className="card bg-light" showDelPoint={showDelPoint}>
         {/* 標題 */}
         <div className="h6 am-section-title">
-          段落 {index + 1}{' '}
+          <span>段落 {index + 1}</span>
           {showDelSec && (
             // 刪除段落的按鈕
             <div
@@ -72,6 +73,9 @@ function ArguSection(props) {
               <FaRegTrashAlt />
             </div>
           )}
+          <span className="ml-auto text-muted">
+            小計: {article[index].content.replace(/ /g, '').length} 字
+          </span>
         </div>
         {/* --------------------------------------------- */}
 

@@ -36,3 +36,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * RWD
 * GA,hot drop
 * 雲端 excel
+
+## 2021-08-10
+
+### Changed & Removed
+
+- 修改預設語言 `<html lang="tw">`
+- 修改垃圾桶樣式，做出 point,section 的區隔
+- 移除 points 的例證

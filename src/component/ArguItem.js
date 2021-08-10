@@ -4,12 +4,13 @@ import styled from '@emotion/styled';
 // 按鈕音效
 import { handleAudioClick } from '../utils/handleAudio';
 // Icon
-import { FaPlus, FaListOl, FaRegTrashAlt } from 'react-icons/fa';
+import { FaPlus, FaListOl, FaRegTrashAlt, FaTrashAlt } from 'react-icons/fa';
 import select_icon from '../img/select_icon.svg';
 //---------------------------------------
 
 function ArguItem(props) {
   const [nowSelect, setNowSelect] = useState('');
+  // const [nowTextarea, setNowTextarea] = useState();
   const {
     typeInfo,
     fileInfo,
@@ -18,7 +19,8 @@ function ArguItem(props) {
     handleDeleteShow,
     showDel,
     setParentSelect,
-    handleTextareaContent,
+    stateTextarea,
+    handleSetTextarea,
   } = props;
   const {
     field,
@@ -32,9 +34,12 @@ function ArguItem(props) {
     isAddBtn,
     isDelBtn,
     isSortBtn,
+    isFaTrashAlt,
     isInputBorder,
   } = typeInfo;
   const refTextarea = useRef(null);
+  //------------
+
   //------------
 
   return (
@@ -105,11 +110,16 @@ function ArguItem(props) {
               id={field}
               rows="1"
               placeholder={placeholder}
-              value={fileInfo && fileInfo[field]}
+              value={
+                stateTextarea ? stateTextarea : fileInfo && fileInfo[field]
+              }
               onChange={(e) => {
                 fileInfo &&
-                  setFileInfo((pre) => ({ ...pre, [[field]]: e.target.value }));
-                handleTextareaContent && handleTextareaContent(e.target.value);
+                  setFileInfo((pre) => ({
+                    ...pre,
+                    [[field]]: e.target.value,
+                  }));
+                handleSetTextarea && handleSetTextarea(e.target.value);
 
                 refTextarea.current.style.height = 'auto';
                 refTextarea.current.style.height =
@@ -145,7 +155,7 @@ function ArguItem(props) {
                     handleDeleteShow();
                   }}
                 >
-                  <FaRegTrashAlt />
+                  {isFaTrashAlt ? <FaTrashAlt /> : <FaRegTrashAlt />}
                 </div>
               )}
             </>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // CSS in JS
 import styled from '@emotion/styled';
 // Icon
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegTrashAlt, FaTrashAlt } from 'react-icons/fa';
 // 按鈕音效
 import { handleAudioClick } from '../utils/handleAudio';
 
@@ -15,7 +15,6 @@ const { pointBtn } = typeInfo;
 //---------------------------------------
 
 function ArguSection(props) {
-  const [localContent, setLocalContent] = useState('');
   const [showDelPoint, setShowDelPoint] = useState(false);
   // point 選單狀態
   const [pointItemType, setPointItemType] = useState('point_1');
@@ -40,13 +39,14 @@ function ArguSection(props) {
     // eslint-disable-next-line
   }, [article]);
   //---------------------------------------
-  function handleTextareaContent(pointID, content) {
+  function handleSetTextarea(pointID, content) {
     let newArticle = JSON.parse(JSON.stringify(article));
     newArticle[index].points.forEach((item) => {
       if (item.id === pointID) item.content = content;
     });
     setArticle(newArticle);
   }
+
   //---------------------------------------
 
   const refTextarea = useRef(null);
@@ -78,9 +78,8 @@ function ArguSection(props) {
           className="form-control form-control-sm am-section-content"
           rows="1"
           placeholder="請填入稿件段落..."
-          value={localContent}
+          value={article[index].content}
           onChange={(e) => {
-            setLocalContent(e.target.value);
             let newArticle = JSON.parse(JSON.stringify(article));
             newArticle[index].content = e.target.value;
             setArticle(newArticle);
@@ -102,14 +101,15 @@ function ArguSection(props) {
                   handleDelPoint(sectionID, id);
                 }}
               >
-                <FaRegTrashAlt />
+                <FaTrashAlt />
               </div>
               <div className="point-item">
                 <ArguItem
                   typeInfo={typeInfo[typeInfoKey]}
-                  handleTextareaContent={(content) =>
-                    handleTextareaContent(id, content)
+                  handleSetTextarea={(content) =>
+                    handleSetTextarea(id, content)
                   }
+                  stateTextarea={article[index].points[index1].content}
                 />
               </div>
             </div>

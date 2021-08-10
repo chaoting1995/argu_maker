@@ -4,13 +4,13 @@ import styled from '@emotion/styled';
 // Icon
 import { FaRegTrashAlt, FaTrashAlt } from 'react-icons/fa';
 // 按鈕音效
-import { handleAudioClick } from '../utils/handleAudio';
+import { handleAudioClick } from '../../utils/handleAudio';
 
 //---------------------------------------
-import ArguItem from '../component/ArguItem';
+import ArguItem from '../../component/arguGetter/ArguItem';
 //---------------------------------------
 // field type
-import typeInfo from '../info/typeInfo';
+import typeInfo from '../../info/typeInfo';
 const { pointBtn } = typeInfo;
 //---------------------------------------
 
@@ -19,7 +19,6 @@ function ArguSection(props) {
   // point 選單狀態
   const [pointItemType, setPointItemType] = useState('point_1');
   const {
-    //   article,
     index,
     sectionID,
     showDelSec,
@@ -50,6 +49,10 @@ function ArguSection(props) {
   //---------------------------------------
 
   const refTextarea = useRef(null);
+  useEffect(() => {
+    refTextarea.current.style.height = 'auto';
+    refTextarea.current.style.height = refTextarea.current.scrollHeight + 'px';
+  }, [refTextarea.current]);
   //---------------------------------------
   return (
     <>

@@ -7,8 +7,8 @@ import long_logo from '../img/long_logo.svg';
 // field type
 import typeInfo, { itemTypeInfoArr } from '../info/typeInfo';
 //---------------------------------------
-import ArguItem from '../component/ArguItem';
-import ArguSection from '../component/ArguSection';
+import ArguItem from '../component/arguGetter/ArguItem';
+import ArguSection from '../component/arguGetter/ArguSection';
 //---------------------------------------
 // CSS in JS
 import styled from '@emotion/styled';

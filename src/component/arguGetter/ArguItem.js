@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // CSS in JS
 import styled from '@emotion/styled';
 // 按鈕音效
-import { handleAudioClick } from '../utils/handleAudio';
+import { handleAudioClick } from '../../utils/handleAudio';
 // Icon
 import { FaPlus, FaListOl, FaRegTrashAlt, FaTrashAlt } from 'react-icons/fa';
-import select_icon from '../img/select_icon.svg';
+import select_icon from '../../img/select_icon.svg';
 //---------------------------------------
 
 function ArguItem(props) {
@@ -37,9 +37,15 @@ function ArguItem(props) {
     isFaTrashAlt,
     isInputBorder,
   } = typeInfo;
-  const refTextarea = useRef(null);
   //------------
-
+  const refTextarea = useRef(null);
+  useEffect(() => {
+    if (refTextarea.current) {
+      refTextarea.current.style.height = 'auto';
+      refTextarea.current.style.height =
+        refTextarea.current.scrollHeight + 'px';
+    }
+  }, [refTextarea.current]);
   //------------
 
   return (

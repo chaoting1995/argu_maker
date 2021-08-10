@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 2021-08-10
 
-### Added & Changed & Removed & fixed
+### Added & Changed & Removed & Fixed
 
 - 修改預設語言 `<html lang="tw">`
 - 修改垃圾桶樣式，做出 point,section 的區隔
@@ -52,3 +52,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - 添加 react-router
 - 添加 ScrollToTop 頁面切換時，要用捲軸讓頁面回到最上方
 - 添加 Menubar
+- 修復 初次載入時，無正確觸發 textarea 響應式高度的問題

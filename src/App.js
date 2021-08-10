@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 //  樣式重置
 import 'normalize.css';
 //  制定路由
@@ -30,6 +30,8 @@ history.listen((location) => {
 });
 
 function App() {
+  const [showMenu, setShowMenu] = useState(false);
+
   //-------------------------GA---------------------------//
   // 初始化
   useEffect(() => {
@@ -48,7 +50,7 @@ function App() {
     <Router history={history} basename={process.env.PUBLIC_URL}>
       <>
         {/* 放切頁時不重新渲染的部份 s*/}
-        <Menubar />
+        {showMenu && <Menubar />}
         <ScrollToTop>
           {/* 放切頁時不重新渲染的部份 e*/}
           {/* 路由設定開始 */}

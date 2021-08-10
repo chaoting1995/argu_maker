@@ -10,7 +10,7 @@ import select_icon from '../img/select_icon.svg';
 
 function ArguItem(props) {
   const [nowSelect, setNowSelect] = useState('');
-  // const [nowTextarea, setNowTextarea] = useState();
+
   const {
     typeInfo,
     fileInfo,

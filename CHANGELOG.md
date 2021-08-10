@@ -39,9 +39,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 2021-08-10
 
-### Changed & Removed & fixed
+### Added & Changed & Removed & fixed
 
 - 修改預設語言 `<html lang="tw">`
 - 修改垃圾桶樣式，做出 point,section 的區隔
 - 移除 points 的例證
 - 修復 section&point 的資料記憶問題
+- 添加 Hotjar
+- 添加 GA
+  - 評估 ID:G-FMVPFES0GP
+  - 串流 ID:2741133002
+- 添加 react-router

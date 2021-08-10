@@ -50,3 +50,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - 評估 ID:G-FMVPFES0GP
   - 串流 ID:2741133002
 - 添加 react-router
+- 添加 ScrollToTop 頁面切換時，要用捲軸讓頁面回到最上方
+- 添加 Menubar

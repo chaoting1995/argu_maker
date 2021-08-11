@@ -9,6 +9,7 @@ import typeInfo, { itemTypeInfoArr } from '../info/typeInfo';
 //---------------------------------------
 import ArguItem from '../component/arguGetter/ArguItem';
 import ArguSection from '../component/arguGetter/ArguSection';
+import ArguCutModal from '../component/arguGetter/ArguCutModal';
 //---------------------------------------
 // CSS in JS
 import styled from '@emotion/styled';
@@ -41,6 +42,8 @@ function ArguGetter() {
 
   //刪除按鈕的顯示狀態
   const [showDelSec, setShowDelSec] = useState(false);
+  // 操控剪裁功能 modal
+  const [showCutModal, setShowCutModal] = useState(false);
 
   //---------------------------------------
   const { sectionBtn } = typeInfo;
@@ -141,9 +144,17 @@ function ArguGetter() {
           showDel={showDelSec}
           setShowDelSec={setShowDelSec}
           handleCreate={handleAddSection}
-          handleDeleteShow={article.length ? handleDelSectionShow : () => {}}
+          handleDeleteShow={article.length ? handleDelSectionShow : null}
+          setShowCutModal={setShowCutModal}
         />
       </ArguGetterWrap>
+
+      {/* cut modal */}
+      <ArguCutModal
+        show={showCutModal}
+        setShow={setShowCutModal}
+        setArticle={setArticle}
+      />
     </>
   );
 }

@@ -4,13 +4,19 @@ import styled from '@emotion/styled';
 // 按鈕音效
 import { handleAudioClick } from '../../utils/handleAudio';
 // Icon
-import { FaPlus, FaListOl, FaRegTrashAlt, FaTrashAlt } from 'react-icons/fa';
+import {
+  FaPlus,
+  FaListOl,
+  FaRegTrashAlt,
+  FaTrashAlt,
+  FaCut,
+} from 'react-icons/fa';
 import select_icon from '../../img/select_icon.svg';
+
 //---------------------------------------
 
 function ArguItem(props) {
   const [nowSelect, setNowSelect] = useState('');
-
   const {
     typeInfo,
     fileInfo,
@@ -21,6 +27,7 @@ function ArguItem(props) {
     setParentSelect,
     stateTextarea,
     handleSetTextarea,
+    setShowCutModal,
   } = props;
   const {
     field,
@@ -35,6 +42,7 @@ function ArguItem(props) {
     isDelBtn,
     isSortBtn,
     isFaTrashAlt,
+    isFaCut,
     isInputBorder,
   } = typeInfo;
   //------------
@@ -47,6 +55,7 @@ function ArguItem(props) {
     }
     // eslint-disable-next-line
   }, [refTextarea.current]);
+
   //------------
 
   return (
@@ -156,13 +165,26 @@ function ArguItem(props) {
               )}
               {isDelBtn && (
                 <div
-                  className={`btn-wrap ${showDel && 'text-danger'}`}
+                  className={`btn-wrap ${showDel && 'text-danger'} ${
+                    !handleDeleteShow && 'd-none'
+                  }`}
                   onClick={() => {
                     handleAudioClick();
-                    handleDeleteShow();
+                    handleDeleteShow && handleDeleteShow();
                   }}
                 >
                   {isFaTrashAlt ? <FaTrashAlt /> : <FaRegTrashAlt />}
+                </div>
+              )}
+              {isFaCut && (
+                <div
+                  className="btn-wrap"
+                  onClick={() => {
+                    handleAudioClick();
+                    setShowCutModal(true);
+                  }}
+                >
+                  <FaCut />
                 </div>
               )}
             </>

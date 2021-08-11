@@ -30,7 +30,7 @@ history.listen((location) => {
 });
 
 function App() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu] = useState(false);
 
   //-------------------------GA---------------------------//
   // 初始化

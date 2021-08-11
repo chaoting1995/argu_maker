@@ -54,3 +54,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - 添加 Menubar
 - 修復 初次載入時，無正確觸發 textarea 響應式高度的問題
 - 添加 段落字數小計
+
+## 2021-08-11
+
+### Added & Changed & Removed & Fixed
+
+- 添加功能：沒有可刪除的對象，就不顯示刪除鍵
+- 修復功能：被自動切割出來的段落，刪一個就全被刪
+- 修復 modal 的關閉按鈕樣式(裝到太新的版本，降回 react-bootstrap@^1.6.1)
+- 修復 複製剪裁符功能 => navigator.clipboard 僅支持通過 HTTPS 提供的頁面，部署後應該就可以了

@@ -62,6 +62,7 @@ const typeInfo = {
     isAddBtn: true,
     isDelBtn: true,
     isSortBtn: false,
+    isFaCut: true,
     // hr: 'border-1',
   },
 

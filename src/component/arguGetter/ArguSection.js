@@ -130,7 +130,7 @@ function ArguSection(props) {
           showDel={showDelPoint}
           handleCreate={() => handleAddPoint(pointItemType)}
           handleDeleteShow={
-            article[index].points.length ? handleDelPointShow : () => {}
+            article[index].points.length ? handleDelPointShow : null
           }
           setParentSelect={setPointItemType}
         />
@@ -171,6 +171,9 @@ const ArguSectionWrap = styled.div`
       margin-bottom: 1rem;
       position: relative;
       color: #dc3545;
+      svg {
+        cursor: pointer;
+      }
     }
 
     .point-item {

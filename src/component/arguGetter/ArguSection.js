@@ -29,6 +29,12 @@ function ArguSection(props) {
     setArticle,
   } = props;
   //---------------------------------------
+  useEffect(() => {
+    refTextarea.current.style.height = 'auto';
+    refTextarea.current.style.height = refTextarea.current.scrollHeight + 'px';
+    // eslint-disable-next-line
+  }, [article]);
+  //---------------------------------------
   function handleDelPointShow() {
     setShowDelPoint(!showDelPoint);
   }

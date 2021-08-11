@@ -67,6 +67,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - 修復 複製剪裁符功能 => navigator.clipboard 僅支持通過 HTTPS 提供的頁面，部署後應該就可以了
 - 移除預設段落卡
 - 修復 section 的 textarea 響應式失敗問題：每次刪除段落卡，實際上只有資料移動，段落卡內的輸入框，其行高並未隨資料變動而做響應式調整
-- 待修項目
-  - 輸入框放大
-  - 輸入框響應式
+- 修復 modal 內 textarea 一 focus 就自動放大畫面的問題

@@ -208,9 +208,16 @@ function ArguCutModalContent(props) {
 
 // CSS
 const ArguCutModalContentWrap = styled.div`
+  label,
+  .am-rwd-text {
+    font-size: 14px;
+  }
+  h6 {
+    font-size: 15px;
+  }
   textarea {
     color: #666;
-    font-size: initial;
+    font-size: initial !important;
     resize: none;
     overflow: hidden;
   }
@@ -244,13 +251,6 @@ const ArguCutModalContentWrap = styled.div`
   .am-alert-show {
     opacity: 1;
     transform: translateY(0px);
-  }
-  label,
-  .am-rwd-text {
-    font-size: 14px;
-  }
-  h6 {
-    font-size: 15px;
   }
 
   @media (min-width: 400px) {

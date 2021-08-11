@@ -1,31 +1,31 @@
 {
   "files": {
     "main.css": "/argu_maker/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/argu_maker/static/js/main.07f6dd40.chunk.js",
-    "main.js.map": "/argu_maker/static/js/main.07f6dd40.chunk.js.map",
-    "runtime-main.js": "/argu_maker/static/js/runtime-main.d2513bd1.js",
-    "runtime-main.js.map": "/argu_maker/static/js/runtime-main.d2513bd1.js.map",
+    "main.js": "/argu_maker/static/js/main.e294910a.chunk.js",
+    "main.js.map": "/argu_maker/static/js/main.e294910a.chunk.js.map",
+    "runtime-main.js": "/argu_maker/static/js/runtime-main.f26c0bf1.js",
+    "runtime-main.js.map": "/argu_maker/static/js/runtime-main.f26c0bf1.js.map",
     "static/css/2.d933f860.chunk.css": "/argu_maker/static/css/2.d933f860.chunk.css",
-    "static/js/2.89bf9923.chunk.js": "/argu_maker/static/js/2.89bf9923.chunk.js",
-    "static/js/2.89bf9923.chunk.js.map": "/argu_maker/static/js/2.89bf9923.chunk.js.map",
-    "static/js/3.b0ddb3ab.chunk.js": "/argu_maker/static/js/3.b0ddb3ab.chunk.js",
-    "static/js/3.b0ddb3ab.chunk.js.map": "/argu_maker/static/js/3.b0ddb3ab.chunk.js.map",
+    "static/js/2.576e80eb.chunk.js": "/argu_maker/static/js/2.576e80eb.chunk.js",
+    "static/js/2.576e80eb.chunk.js.map": "/argu_maker/static/js/2.576e80eb.chunk.js.map",
+    "static/js/3.d14d9bfc.chunk.js": "/argu_maker/static/js/3.d14d9bfc.chunk.js",
+    "static/js/3.d14d9bfc.chunk.js.map": "/argu_maker/static/js/3.d14d9bfc.chunk.js.map",
     "index.html": "/argu_maker/index.html",
     "service-worker.js": "/argu_maker/service-worker.js",
     "service-worker.js.map": "/argu_maker/service-worker.js.map",
     "static/css/2.d933f860.chunk.css.map": "/argu_maker/static/css/2.d933f860.chunk.css.map",
     "static/css/main.6dea0f05.chunk.css.map": "/argu_maker/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.89bf9923.chunk.js.LICENSE.txt": "/argu_maker/static/js/2.89bf9923.chunk.js.LICENSE.txt",
+    "static/js/2.576e80eb.chunk.js.LICENSE.txt": "/argu_maker/static/js/2.576e80eb.chunk.js.LICENSE.txt",
     "static/media/bell.eb68a9d5.mp3": "/argu_maker/static/media/bell.eb68a9d5.mp3",
     "static/media/click.75a762bf.mp3": "/argu_maker/static/media/click.75a762bf.mp3",
     "static/media/long_logo.d86fad22.svg": "/argu_maker/static/media/long_logo.d86fad22.svg",
     "static/media/select_icon.c52f9c86.svg": "/argu_maker/static/media/select_icon.c52f9c86.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d2513bd1.js",
+    "static/js/runtime-main.f26c0bf1.js",
     "static/css/2.d933f860.chunk.css",
-    "static/js/2.89bf9923.chunk.js",
+    "static/js/2.576e80eb.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.07f6dd40.chunk.js"
+    "static/js/main.e294910a.chunk.js"
   ]
 }

@@ -31,11 +31,11 @@ function ArguGetter() {
       id: 1, //timestamp
       content: '',
       points: [
-        {
-          id: 1, //timestamp
-          content: '',
-          typeInfoKey: 'point_1',
-        },
+        // {
+        //   id: 1, //timestamp
+        //   content: '',
+        //   typeInfoKey: 'point_1',
+        // },
       ],
     },
   ]);

@@ -245,6 +245,7 @@ const ArguCutModalContentWrap = styled.div`
     opacity: 1;
     transform: translateY(0px);
   }
+  label,
   .am-rwd-text {
     font-size: 14px;
   }
@@ -269,9 +270,6 @@ const ArguCutModalContentWrap = styled.div`
       flex-grow: 1;
       text-align: start;
       margin-left: 15px;
-    }
-    .am-rwd-text {
-      font-size: 14px;
     }
 
     h6 {

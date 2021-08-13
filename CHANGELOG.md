@@ -81,6 +81,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 2021-08-12
 
-### Fixed
+### Fixed & Changed
 
 - 修復段落資訊卡中，回車鍵被納入字數統計的 bug
+- 修改功能按鈕(新增、刪除、分段)的點擊時顏色
+
+  103.71 KB build/static/js/2.5477579b.chunk.js
+  22.81 KB build/static/css/2.d933f860.chunk.css
+  7.08 KB (+26 B) build/static/js/main.4b6a5dfd.chunk.js
+  1.39 KB build/static/js/3.21cbaed4.chunk.js
+  1.17 KB build/static/js/runtime-main.11e0f2e2.js
+  278 B build/static/css/main.6dea0f05.chunk.css

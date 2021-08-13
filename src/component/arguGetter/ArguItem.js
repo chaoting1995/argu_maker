@@ -165,7 +165,7 @@ function ArguItem(props) {
               )}
               {isDelBtn && (
                 <div
-                  className={`btn-wrap ${showDel && 'text-danger'} ${
+                  className={`btn-wrap icon-trash ${showDel && 'text-danger'} ${
                     !handleDeleteShow && 'd-none'
                   }`}
                   onClick={() => {
@@ -178,7 +178,7 @@ function ArguItem(props) {
               )}
               {isFaCut && (
                 <div
-                  className="btn-wrap"
+                  className="btn-wrap icon-cut"
                   onClick={() => {
                     handleAudioClick();
                     setShowCutModal(true);
@@ -294,6 +294,12 @@ const ArguMakerWrap = styled.div`
       transform: translateY(5px);
     }
     &.icon-plus:active svg {
+      color: #28a745;
+    }
+    &.icon-trash:active svg {
+      color: #dc3545;
+    }
+    &.icon-cut:active svg {
       color: #007bff;
     }
   }

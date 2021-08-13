@@ -80,7 +80,14 @@ function ArguSection(props) {
             </div>
           )}
           <span className="ml-auto text-muted">
-            小計: {article[index].content.replace(/ /g, '').length} 字
+            小計:{' '}
+            {
+              article[index].content
+                .replace(/ /g, '')
+                .replace(/\r\n/g, '')
+                .replace(/\n/g, '').length
+            }{' '}
+            字
           </span>
         </div>
         {/* --------------------------------------------- */}
@@ -155,6 +162,7 @@ const ArguSectionWrap = styled.div`
       margin-left: 10px;
       margin-top: -3px;
       color: #dc3545;
+      cursor: pointer;
     }
   }
   .am-section-content {

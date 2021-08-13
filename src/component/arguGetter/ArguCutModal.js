@@ -5,7 +5,8 @@ import styled from '@emotion/styled';
 // 按鈕音效
 import { handleAudioClick } from '../../utils/handleAudio';
 //---------------------------------------
-import { Modal, Alert } from 'react-bootstrap';
+import { Modal, Alert, Accordion } from 'react-bootstrap';
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 // Icon
 import { FaCut } from 'react-icons/fa';
 
@@ -60,7 +61,7 @@ function ArguCutModalContent(props) {
       .then(() => {
         // 文本已經成功複製到剪切板
         setCopyAlert(['primary', '已複製 8< - - - - - - -']);
-        setTimeout(() => setCopyAlert(false), 1000);
+        setTimeout(() => setCopyAlert(false), 2000);
       })
       .catch((err) => {
         // 如果用戶無法複製，則拋出異常
@@ -145,7 +146,7 @@ function ArguCutModalContent(props) {
         {/* --------------------------------------------- */}
         <h6 className="text-primary">2. 複製裁切符，貼入稿件中</h6>
 
-        <div className="btn-alert-wrap form-group row mx-0 font-weight-bold ">
+        <div className="btn-alert-wrap form-group row mx-0 mb-0 font-weight-bold">
           <button
             type="button"
             className="btn btn-primary btn-sm text-center am-rwd-text mb-2"
@@ -162,15 +163,37 @@ function ArguCutModalContent(props) {
             取得剪裁符，貼入稿件中
             <Alert
               variant={copyAlert[0] ? copyAlert[0] : 'primary'}
-              className={`am-rwd-text am-alert text-center  px-0 position-absolute  font-weight-normal ${
+              className={`am-rwd-text am-alert text-center w-100 px-0 position-absolute  font-weight-normal ${
                 copyAlert[1] && 'am-alert-show'
               }`}
-              style={{ top: 0, width: '100%' }}
+              style={{ top: 0 }}
             >
               {copyAlert[1]}
             </Alert>
           </div>
         </div>
+        <span id="cut-sign" className="d-none">
+          {'8< - - - - - - -'}
+        </span>
+        {/* --------------------------------------------------- */}
+        {/* <div className="btn-alert-wrap form-group row mx-0 font-weight-bold w-100"> </div> */}
+        <Accordion>
+          <CustomToggle eventKey="0">看範例</CustomToggle>
+          <Accordion.Collapse eventKey="0">
+            <div className="am-rwd-text am-text-intro font-weight-normal mb-2 rounded p-3">
+              位好各位好各位好各位好，位好各位好各位好各位好各位好各位好，各位好各位好好各位好各位好各位好。
+              <br />
+              <span className="text-danger font-weight-bold">{`8< - - - - - - - `}</span>
+              <br />
+              我方認為我方認為我方認為，我方認為我方認為我方認為我方認為，我方認為我方認為我方認為我方認為。
+              <br />
+              <span className="text-danger font-weight-bold">{`8< - - - - - - - `}</span>
+              <br />
+              謝謝各位謝謝各位謝謝各位，謝謝各位謝謝各位謝謝各位謝謝各位，謝謝各位謝謝各位謝謝各位謝謝各位。
+            </div>
+          </Accordion.Collapse>
+        </Accordion>
+
         <span id="cut-sign" className="d-none">
           {'8< - - - - - - -'}
         </span>
@@ -189,13 +212,12 @@ function ArguCutModalContent(props) {
           >
             剪裁
           </button>
-          <div className="am-rwd-text am-text form-control form-control-sm border-0 px-0 mb-2 position-relative mb-2">
+          <div className="am-rwd-text am-text form-control form-control-sm border-0 px-0 py-0 mb-2 position-relative">
             <Alert
               variant={cutAlert[0] ? cutAlert[0] : 'primary'}
-              className={`am-rwd-text  am-alert  text-center px-0 position-absolute flex-grow-1 font-weight-normal ${
+              className={`am-rwd-text  am-alert  text-center w-100 px-0 position-absolute flex-grow-1 font-weight-normal ${
                 cutAlert[1] && 'am-alert-show'
               }`}
-              style={{ top: 0, width: '100%' }}
             >
               {cutAlert[1]}
             </Alert>
@@ -205,7 +227,24 @@ function ArguCutModalContent(props) {
     </>
   );
 }
+// -----------------------------------------------------
+function CustomToggle({ children, eventKey }) {
+  const decoratedOnClick = useAccordionToggle(eventKey);
 
+  return (
+    <button
+      onClick={() => {
+        handleAudioClick();
+        decoratedOnClick();
+      }}
+      type="button"
+      className="btn btn-light btn-sm text-center am-rwd-text mb-2"
+    >
+      {children}
+    </button>
+  );
+}
+// -----------------------------------------------------
 // CSS
 const ArguCutModalContentWrap = styled.div`
   label,
@@ -241,6 +280,12 @@ const ArguCutModalContentWrap = styled.div`
   .am-click-text {
     display: none;
   }
+  .am-text-intro {
+    color: #41464b;
+    background-color: #eee;
+    border-color: #d3d6d8;
+  }
+
   .am-alert {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
@@ -258,7 +303,7 @@ const ArguCutModalContentWrap = styled.div`
       display: inline;
     }
   }
-  @media (min-width: 300px) {
+  @media (min-width: 320px) {
     .btn-alert-wrap {
       flex-direction: row;
     }
@@ -271,9 +316,8 @@ const ArguCutModalContentWrap = styled.div`
       text-align: start;
       margin-left: 15px;
     }
-
     h6 {
-      font-size: unset;
+      font-size: 17px;
     }
   }
 `;

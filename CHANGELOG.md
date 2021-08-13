@@ -16,14 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 開發計畫
 
-- [v]自動切割文件
 - [-]匯出 pdf 檔
-- [-]navbar
+- [-]navbar[home,about,feedback,donate,]
 - [-]PWA 設定再升級
 - [-]RWD
-- [v]GA,hot drop
 - [-]雲端 excel
 - [-]畫線功能,響應重點摘要 1.match() 2.div 模擬 textarea
+- [-]用 google 問卷製作反饋
+- [-]剪裁符的範例
+- [v]自動切割文件
+- [v]GA,hot drop
+- [v]排序功能
 
 ## 2021-08-08
 
@@ -56,7 +59,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - 修復 初次載入時，無正確觸發 textarea 響應式高度的問題
 - 添加 段落字數小計
 
-## 2021-08-12
+## 2021-08-11
 
 ### Added & Changed & Removed & Fixed
 
@@ -68,3 +71,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - 移除預設段落卡
 - 修復 section 的 textarea 響應式失敗問題：每次刪除段落卡，實際上只有資料移動，段落卡內的輸入框，其行高並未隨資料變動而做響應式調整
 - 修復 modal 內 textarea 一 focus 就自動放大畫面的問題
+
+## 2021-08-12
+
+### Removed & Added
+
+- 移除 points 的成立
+- 新增快速分段的範例說明
+
+## 2021-08-12
+
+### Fixed
+
+- 修復段落資訊卡中，回車鍵被納入字數統計的 bug

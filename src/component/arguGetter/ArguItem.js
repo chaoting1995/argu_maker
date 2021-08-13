@@ -239,7 +239,11 @@ const ArguMakerWrap = styled.div`
   select::-ms-expand {
     display: none;
   }
-
+  @media (max-width: 300px) {
+    select {
+      background-size: 6px;
+    }
+  }
   .label-level-1 {
     background-color: #444;
     color: #eee;
@@ -288,6 +292,9 @@ const ArguMakerWrap = styled.div`
     &:active {
       transition: 0.2s;
       transform: translateY(5px);
+    }
+    &.icon-plus:active svg {
+      color: #007bff;
     }
   }
   .hr-dark {

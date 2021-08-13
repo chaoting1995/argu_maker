@@ -18,6 +18,7 @@ function ArguSection(props) {
   const [showDelPoint, setShowDelPoint] = useState(false);
   // point 選單狀態
   const [pointItemType, setPointItemType] = useState('point_1');
+
   const {
     index,
     sectionID,
@@ -61,6 +62,20 @@ function ArguSection(props) {
     // eslint-disable-next-line
   }, [refTextarea.current]);
   //---------------------------------------
+  const refMask = useRef(null);
+  useEffect(() => {
+    const point_1_content =
+      article[index].points.find((o) => o.typeInfoKey === 'point_1') &&
+      article[index].points.find((o) => o.typeInfoKey === 'point_1').content;
+
+    const newStr = article[index].content.replace(
+      point_1_content,
+      `<span>${point_1_content}</span>`
+    );
+    refMask.current.innerHTML = newStr;
+    // eslint-disable-next-line
+  }, [article, article[index].content]);
+  //---------------------------------------
   return (
     <>
       <ArguSectionWrap className="card bg-light" showDelPoint={showDelPoint}>
@@ -93,21 +108,27 @@ function ArguSection(props) {
         {/* --------------------------------------------- */}
 
         {/* 多行文字輸入框 */}
-        <textarea
-          ref={refTextarea}
-          className="form-control form-control-sm am-section-content"
-          rows="1"
-          placeholder="請填入稿件段落..."
-          value={article[index].content}
-          onChange={(e) => {
-            let newArticle = JSON.parse(JSON.stringify(article));
-            newArticle[index].content = e.target.value;
-            setArticle(newArticle);
-            refTextarea.current.style.height = 'auto';
-            refTextarea.current.style.height =
-              refTextarea.current.scrollHeight + 'px';
-          }}
-        />
+        <div className="position-relative">
+          <textarea
+            ref={refTextarea}
+            className="form-control form-control-sm am-section-content"
+            rows="1"
+            placeholder="請填入稿件段落..."
+            value={article[index].content}
+            onChange={(e) => {
+              let newArticle = JSON.parse(JSON.stringify(article));
+              newArticle[index].content = e.target.value;
+              setArticle(newArticle);
+              refTextarea.current.style.height = 'auto';
+              refTextarea.current.style.height =
+                refTextarea.current.scrollHeight + 'px';
+            }}
+          />
+          <pre
+            ref={refMask}
+            className="form-control form-control-sm am-section-content"
+          ></pre>
+        </div>
         {/* --------------------------------------------- */}
 
         {article[index].points.map(({ id, typeInfoKey }, index1) => {
@@ -193,6 +214,33 @@ const ArguSectionWrap = styled.div`
     .point-item {
       width: 100%;
     }
+  }
+  pre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 1rem);
+    pointer-events: none;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0) !important;
+
+    white-space: pre-wrap;
+    border-top: 2px solid rgba(0, 0, 0, 0);
+  }
+  pre > span {
+    position: relative;
+    ${'' /* color: #7b141e; */}
+  }
+  pre > span:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 65%);
+    left: calc(50% - 55%);
+    width: 110%;
+    height: 130%;
+    border-radius: 15px;
+    background-color: rgba(250, 0, 25, 0.25);
   }
 `;
 export default ArguSection;

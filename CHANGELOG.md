@@ -17,12 +17,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 開發計畫
 
 - [-]匯出 pdf 檔
-- [-]navbar[home,about,feedback,donate,]
+- [-]navbar[home,Intro,About]
+- [-]Intro 說明頁面，介紹產品使用方式、功能
+- [-]About 關於頁面，產品簡介、作者資訊、抖內連結、反饋管道、更版資訊
+- [-]feedback,用 google 問卷製作反饋
 - [-]PWA 設定再升級
 - [-]RWD
 - [-]雲端 excel
 - [-]畫線功能,響應重點摘要 1.match() 2.div 模擬 textarea
-- [-]用 google 問卷製作反饋
+
 - [-]剪裁符的範例
 - [v]自動切割文件
 - [v]GA,hot drop

@@ -95,3 +95,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   1.39 KB build/static/js/3.21cbaed4.chunk.js
   1.17 KB build/static/js/runtime-main.11e0f2e2.js
   278 B build/static/css/main.6dea0f05.chunk.css
+
+## 2021-08-13
+
+### Added & Fixed
+
+- 添加 auto mark highlight 功能，自動識別「重點」文字內容使否存在於段落中，在段落中畫線強調
+- 修復分析點的資料刪除後響應式高度問題
+
+- npm run deploy
+  103.71 KB build/static/js/2.5477579b.chunk.js
+  22.81 KB build/static/css/2.d933f860.chunk.css
+  7.32 KB build/static/js/main.f3f9608a.chunk.js
+  1.39 KB build/static/js/3.21cbaed4.chunk.js
+  1.17 KB build/static/js/runtime-main.11e0f2e2.js
+  278 B build/static/css/main.6dea0f05.chunk.css

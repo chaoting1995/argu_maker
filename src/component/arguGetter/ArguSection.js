@@ -36,9 +36,6 @@ function ArguSection(props) {
     // eslint-disable-next-line
   }, [article]);
   //---------------------------------------
-  function handleDelPointShow() {
-    setShowDelPoint(!showDelPoint);
-  }
 
   useEffect(() => {
     if (!article[index].points.length) setShowDelPoint(false);
@@ -68,13 +65,20 @@ function ArguSection(props) {
       article[index].points.find((o) => o.typeInfoKey === 'point_1') &&
       article[index].points.find((o) => o.typeInfoKey === 'point_1').content;
 
+    const point_1_regex = point_1_content && new RegExp(point_1_content, 'g');
+
     const newStr = article[index].content.replace(
-      point_1_content,
-      `<span>${point_1_content}</span>`
+      point_1_regex,
+      `<span class="high-line">${point_1_content}</span>`
     );
+    // point_1_content &&
+    //   Array.from({ length: point_1_content.length })
+    //     .map((str, i) => str && str.splice(i, 0, '\n'))
+    //     .forEach((str) => newStr.replace(str, `<span>${str}</span>`));
     refMask.current.innerHTML = newStr;
     // eslint-disable-next-line
   }, [article, article[index].content]);
+
   //---------------------------------------
   return (
     <>
@@ -100,6 +104,7 @@ function ArguSection(props) {
               article[index].content
                 .replace(/ /g, '')
                 .replace(/\r\n/g, '')
+                .replace(/\r/g, '')
                 .replace(/\n/g, '').length
             }{' '}
             字
@@ -164,7 +169,9 @@ function ArguSection(props) {
           showDel={showDelPoint}
           handleCreate={() => handleAddPoint(pointItemType)}
           handleDeleteShow={
-            article[index].points.length ? handleDelPointShow : null
+            article[index].points.length
+              ? () => setShowDelPoint(!showDelPoint)
+              : null
           }
           setParentSelect={setPointItemType}
         />
@@ -192,6 +199,8 @@ const ArguSectionWrap = styled.div`
     font-size: initial;
     resize: none;
     overflow: hidden;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 16px;
   }
   .point-wrap {
     display: flex;
@@ -215,6 +224,7 @@ const ArguSectionWrap = styled.div`
       width: 100%;
     }
   }
+
   pre {
     position: absolute;
     top: 0;
@@ -223,24 +233,22 @@ const ArguSectionWrap = styled.div`
     height: calc(100% - 1rem);
     pointer-events: none;
     background-color: transparent;
+    ${'' /* color: rgba(0, 0, 0, 0.5) !important; */}
     color: rgba(0, 0, 0, 0) !important;
-
     white-space: pre-wrap;
     border-top: 2px solid rgba(0, 0, 0, 0);
   }
-  pre > span {
-    position: relative;
-    ${'' /* color: #7b141e; */}
-  }
-  pre > span:after {
-    content: '';
-    position: absolute;
-    top: calc(50% - 65%);
-    left: calc(50% - 55%);
-    width: 110%;
-    height: 130%;
+  pre > .high-line {
+    ${'' /* color: #e60b20; */}
     border-radius: 15px;
-    background-color: rgba(250, 0, 25, 0.25);
+
+    padding: 4px 4px;
+    background-image: linear-gradient(
+      rgba(250, 0, 25, 0.25),
+      rgba(250, 0, 25, 0.25)
+    );
+    ${'' /* background-position: left bottom; */}
+    ${'' /* background-size: 110% 130%; */}
   }
 `;
 export default ArguSection;

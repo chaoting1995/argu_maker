@@ -54,7 +54,7 @@ function ArguItem(props) {
         refTextarea.current.scrollHeight + 'px';
     }
     // eslint-disable-next-line
-  }, [refTextarea.current]);
+  }, [refTextarea.current, stateTextarea]);
 
   //------------
 

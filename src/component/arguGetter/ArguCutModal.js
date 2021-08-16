@@ -78,7 +78,11 @@ function ArguCutModalContent(props) {
     // 若有段落為空、回車，排除
     newArticle = newArticle.filter(
       (item) =>
-        !!item.replace(/ /g, '').replace(/\r\n/g, '').replace(/\n/g, '').length
+        !!item
+          .replace(/ /g, '')
+          .replace(/\r\n/g, '')
+          .replace(/\r/g, '')
+          .replace(/\n/g, '').length
     );
     // 格式檢查，不通過 -------------------------------
     // 若無內容 => 不匯出，不關閉modal

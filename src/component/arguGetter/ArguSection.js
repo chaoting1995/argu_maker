@@ -64,17 +64,23 @@ function ArguSection(props) {
     const point_1_content =
       article[index].points.find((o) => o.typeInfoKey === 'point_1') &&
       article[index].points.find((o) => o.typeInfoKey === 'point_1').content;
+    //過濾特殊字元
+    function filterSpacial(str) {
+      const pattern =
+        /[`~!@#$^&*()=|{}':;',\\\[\]\.<>\/?~！@#￥……&*（）——|{}【】'；：""'。，、？]/g;
+      return str.replace(pattern, '');
+    }
 
-    const point_1_regex = point_1_content && new RegExp(point_1_content, 'g');
+    const point_1_regex =
+      point_1_content && new RegExp(filterSpacial(point_1_content), 'g');
 
-    const newStr = article[index].content.replace(
-      point_1_regex,
-      `<span class="high-line">${point_1_content}</span>`
-    );
-    // point_1_content &&
-    //   Array.from({ length: point_1_content.length })
-    //     .map((str, i) => str && str.splice(i, 0, '\n'))
-    //     .forEach((str) => newStr.replace(str, `<span>${str}</span>`));
+    const newStr =
+      point_1_content &&
+      article[index].content.replace(
+        point_1_regex,
+        `<span class="high-line">${point_1_content}</span>`
+      );
+
     refMask.current.innerHTML = newStr;
     // eslint-disable-next-line
   }, [article, article[index].content]);
@@ -239,16 +245,16 @@ const ArguSectionWrap = styled.div`
     border-top: 2px solid rgba(0, 0, 0, 0);
   }
   pre > .high-line {
-    ${'' /* color: #e60b20; */}
     border-radius: 15px;
-
-    padding: 4px 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     background-image: linear-gradient(
       rgba(250, 0, 25, 0.25),
       rgba(250, 0, 25, 0.25)
     );
-    ${'' /* background-position: left bottom; */}
-    ${'' /* background-size: 110% 130%; */}
+    background-position: center bottom;
+    background-size: 140% 130%;
+    ${'' /* color: #e60b20; */}
   }
 `;
 export default ArguSection;

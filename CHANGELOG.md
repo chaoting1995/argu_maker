@@ -110,3 +110,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   1.39 KB build/static/js/3.21cbaed4.chunk.js
   1.17 KB build/static/js/runtime-main.11e0f2e2.js
   278 B build/static/css/main.6dea0f05.chunk.css
+
+## 2021-08-16
+
+### Fixed
+
+- 修復 auto mark highlight 換行功能
+- npm run deploy
+  103.71 KB build/static/js/2.5477579b.chunk.js
+  22.81 KB build/static/css/2.d933f860.chunk.css
+  7.39 KB (+70 B) build/static/js/main.5eadb1f0.chunk.js
+  1.39 KB build/static/js/3.21cbaed4.chunk.js
+  1.17 KB build/static/js/runtime-main.11e0f2e2.js
+  278 B build/static/css/main.6dea0f05.chunk.css

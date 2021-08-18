@@ -18,9 +18,10 @@ import ScrollToTop from './component/modules/ScrollToTop';
 //--------------------個別頁面元件-----------------------//
 import Home from './page/Home';
 import ArguGetter from './page/ArguGetter';
+import About from './page/Test2';
 import Intro from './page/Intro';
-import Test2 from './page/Test2';
 import User from './page/User';
+// import Test2 from './page/Test2';
 
 // //-------------------------GA---------------------------//
 // GA
@@ -64,8 +65,8 @@ function App() {
             <Route exact path="/" component={ArguGetter} />
             <Route exact path="/arguGetter" component={ArguGetter} />
             <Route exact path="/home" component={Home} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/intro" component={Intro} />
-            <Route exact path="/test2" component={Test2} />
             <Route exact path="/login" component={User} />
 
             {/* 根路徑或未定義路徑，一律導向到/home */}

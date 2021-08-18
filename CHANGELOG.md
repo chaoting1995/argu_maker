@@ -123,3 +123,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   1.39 KB build/static/js/3.21cbaed4.chunk.js
   1.17 KB build/static/js/runtime-main.11e0f2e2.js
   278 B build/static/css/main.6dea0f05.chunk.css
+
+## 2021-08-18
+
+### Added & Test
+
+- 添加 Navbar
+- 添加 Home,Intro,User,Edit,AM(About)
+- 測試 Login 功能，未成

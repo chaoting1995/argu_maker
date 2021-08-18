@@ -31,7 +31,7 @@ const tabs = [
     label: 'AM',
   },
   {
-    route: '/test2',
+    route: '/intro',
     icon: <RiQuestionFill size="30" />,
     label: 'Intro',
   },
@@ -52,7 +52,7 @@ const Navigation = (props) => {
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/home">
-            Brand
+            Argu Maker
           </a>
           <Nav className="ml-auto">
             <NavItem>
@@ -105,7 +105,7 @@ const Navigation = (props) => {
 // CSS
 const NavigationWrap = styled.div`
   .navbar {
-    border-bottom: solid 1px #ebebeb;
+    ${'' /* border-bottom: solid 1px #ebebeb; */}
   }
   .bottom-tab-nav {
     border-top: solid 1px #1ab1c9;

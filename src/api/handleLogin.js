@@ -4,9 +4,11 @@ export default async function handleLogin(body) {
   const req = new Request(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify(body),
+    // body: JSON.stringify(body),
+    body: new URLSearchParams(body).toString(),
   });
 
   // AJAX

@@ -66,6 +66,7 @@ function ArguSection(props) {
       article[index].points.find((o) => o.typeInfoKey === 'point_1').content;
     //過濾特殊字元
     function filterSpacial(str) {
+      // eslint-disable-next-line
       const pattern = /[`~!@#$^&*=|{}':;',\\\[\]\.<>\/?~！@#￥……&*（）——'""']/g;
       return str.replace(pattern, '');
     }

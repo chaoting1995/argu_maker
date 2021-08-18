@@ -11,12 +11,16 @@ import {
 //--------------------所有頁面共用元件-----------------------//
 // 選單
 import Menubar from './component/modules/Menubar';
+import Navigation from './component/modules/Navigation';
 //頁面切換時，要用捲軸讓頁面回到最上方
 import ScrollToTop from './component/modules/ScrollToTop';
 
 //--------------------個別頁面元件-----------------------//
+import Home from './page/Home';
 import ArguGetter from './page/ArguGetter';
+import Intro from './page/Intro';
 import Test2 from './page/Test2';
+import User from './page/User';
 
 // //-------------------------GA---------------------------//
 // GA
@@ -26,7 +30,7 @@ import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
 history.listen((location) => {
   ReactGA.set({ page: location.pathname });
-  ReactGA.pageview(location.pathname);
+  // ReactGA.pageview(location.pathname);
 });
 
 function App() {
@@ -51,18 +55,19 @@ function App() {
       <>
         {/* 放切頁時不重新渲染的部份 s*/}
         {showMenu && <Menubar />}
+        {<Navigation />}
         <ScrollToTop>
           {/* 放切頁時不重新渲染的部份 e*/}
           {/* 路由設定開始 */}
           <Switch>
             {/* 放"page資料夾"內的元件 */}
-            <Route exact path="/">
-              <ArguGetter />
-            </Route>
-            {/* for dev */}
-            <Route exact path="/test2">
-              <Test2 />
-            </Route>
+            <Route exact path="/" component={ArguGetter} />
+            <Route exact path="/arguGetter" component={ArguGetter} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/intro" component={Intro} />
+            <Route exact path="/test2" component={Test2} />
+            <Route exact path="/login" component={User} />
+
             {/* 根路徑或未定義路徑，一律導向到/home */}
             <Redirect to="/" />
           </Switch>

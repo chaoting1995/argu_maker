@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 開發計畫
 
 - [-]匯出 pdf 檔
-- [-]navbar[home,Intro,About]
+- [-]navbar[home,Intro,About,member]
 - [-]Intro 說明頁面，介紹產品使用方式、功能
 - [-]About 關於頁面，產品簡介、作者資訊、抖內連結、反饋管道、更版資訊
 - [-]feedback,用 google 問卷製作反饋

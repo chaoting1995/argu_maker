@@ -4,11 +4,12 @@ export default async function handleLogin(body) {
   const req = new Request(url, {
     method: 'POST',
     headers: {
-      // 'Content-Type': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      api_key: 'argu-maker-authorized',
     },
-    // body: JSON.stringify(body),
-    body: new URLSearchParams(body).toString(),
+    body: JSON.stringify(body),
+    // body: new URLSearchParams(body).toString(),
   });
 
   // AJAX

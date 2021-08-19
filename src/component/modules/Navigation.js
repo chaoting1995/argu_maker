@@ -14,35 +14,38 @@ import {
   RiQuestionFill,
 } from 'react-icons/ri';
 // --------------------------------------------------------
-const tabs = [
-  {
-    route: '/home',
-    icon: <RiHome6Fill size="30" />,
-    label: 'Home',
-  },
-  {
-    route: '/arguGetter',
-    icon: <RiEditBoxFill size="30" />,
-    label: 'Edit',
-  },
-  {
-    route: '/search',
-    icon: <RiInputMethodFill size="30" />,
-    label: 'AM',
-  },
-  {
-    route: '/intro',
-    icon: <RiQuestionFill size="30" />,
-    label: 'Intro',
-  },
-  {
-    route: '/login',
-    icon: <RiLoginBoxFill size="30" />,
-    label: 'Login',
-  },
-];
+
 // --------------------------------------------------------
-const Navigation = (props) => {
+function Navigation(props) {
+  const { userInfo, setUserInfo } = props;
+
+  const tabs = [
+    {
+      route: '/home',
+      icon: <RiHome6Fill size="30" />,
+      label: '首頁',
+    },
+    {
+      route: '/local',
+      icon: <RiEditBoxFill size="30" />,
+      label: '單機版',
+    },
+    {
+      route: '/arguMaker',
+      icon: <RiInputMethodFill size="30" />,
+      label: 'ArguMaker',
+    },
+    {
+      route: '/intro',
+      icon: <RiQuestionFill size="30" />,
+      label: '說明',
+    },
+    {
+      route: '/user',
+      icon: userInfo ? <RiUser3Fill size="30" /> : <RiLoginBoxFill size="30" />,
+      label: userInfo ? ' 會員' : '登入',
+    },
+  ];
   return (
     <NavigationWrap>
       {/* Top Bar*/}
@@ -55,21 +58,17 @@ const Navigation = (props) => {
             Argu Maker
           </a>
           <Nav className="ml-auto">
-            <NavItem>
-              <NavLink to="/test2" className="nav-link">
-                Test2
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/arguGetter" className="nav-link">
-                ArguGetter
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/login" className="nav-link">
-                Login
-              </NavLink>
-            </NavItem>
+            {tabs.map((tab, index) => (
+              <NavItem key={`tab-${index}`}>
+                <NavLink
+                  to={tab.route}
+                  className="nav-link top-nav-link"
+                  activeClassName="active"
+                >
+                  <span className="top-tab-label">{tab.label}</span>
+                </NavLink>
+              </NavItem>
+            ))}
           </Nav>
         </div>
       </nav>
@@ -100,22 +99,31 @@ const Navigation = (props) => {
       </nav>
     </NavigationWrap>
   );
-};
+}
 
 // CSS
 const NavigationWrap = styled.div`
   .navbar {
     ${'' /* border-bottom: solid 1px #ebebeb; */}
   }
+  .navbar-brand {
+    color: #fff;
+  }
   .bottom-tab-nav {
     border-top: solid 1px #1ab1c9;
   }
-  .nav-link,
+  .top-nav-link {
+    color: #eee;
+  }
   .bottom-nav-link {
     color: #55575b;
   }
+  .nav-link.active,
   .bottom-nav-link.active {
     color: #1ab1c9;
+  }
+  .top-tab-label {
+    font-weight: 700;
   }
   .bottom-tab-label {
     font-size: 12px;

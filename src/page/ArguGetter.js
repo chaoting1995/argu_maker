@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
+//---------------------------------------
 // 時間格式
 import moment from 'moment';
 //---------------------------------------
 import long_logo from '../img/long_logo.svg';
-//---------------------------------------
 // field type
 import typeInfo, { itemTypeInfoArr } from '../info/typeInfo';
 //---------------------------------------

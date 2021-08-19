@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 //  樣式重置
 import 'normalize.css';
 //  制定路由
@@ -34,8 +35,12 @@ history.listen((location) => {
   // ReactGA.pageview(location.pathname);
 });
 
-function App() {
+function App(props) {
   const [showMenu] = useState(false);
+
+  // 記住登入狀態
+  const getUserInfo = JSON.parse(localStorage.getItem('AM_UserInfo'));
+  const [userInfo, setUserInfo] = useState(getUserInfo);
 
   //-------------------------GA---------------------------//
   // 初始化
@@ -46,6 +51,21 @@ function App() {
     // ReactGA.pageview(window.location.pathname);
     // ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
+  //------------------------------------
+
+  const handleAuth = (path, onlyAdmin) => {
+    // 保護路由:用戶權限
+    if (userInfo) {
+      // 保護路由:管理權限
+      if (!onlyAdmin || userInfo.isAdmin) {
+        return path;
+      } else {
+        history.push('/login');
+      }
+    } else {
+      history.push('/login');
+    }
+  };
 
   return (
     //--------------------路由表-----------------------//
@@ -56,21 +76,43 @@ function App() {
       <>
         {/* 放切頁時不重新渲染的部份 s*/}
         {showMenu && <Menubar />}
-        {<Navigation />}
+
+        <Navigation userInfo={userInfo} setUserInfo={setUserInfo} />
+
         <ScrollToTop>
           {/* 放切頁時不重新渲染的部份 e*/}
           {/* 路由設定開始 */}
           <Switch>
             {/* 放"page資料夾"內的元件 */}
-            <Route exact path="/" component={ArguGetter} />
-            <Route exact path="/arguGetter" component={ArguGetter} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/intro" component={Intro} />
-            <Route exact path="/login" component={User} />
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+
+            <Route exact path="/local">
+              <ArguGetter />
+            </Route>
+
+            <Route exact path="/arguMaker">
+              <ArguGetter />
+            </Route>
+
+            <Route exact path="/about">
+              <About />
+            </Route>
+
+            <Route exact path="/intro">
+              <Intro />
+            </Route>
+
+            <Route exact path="/user">
+              <User userInfo={userInfo} setUserInfo={setUserInfo} />
+            </Route>
 
             {/* 根路徑或未定義路徑，一律導向到/home */}
-            <Redirect to="/" />
+            <Redirect to={handleAuth('/home')} />
           </Switch>
         </ScrollToTop>
         {/* 路由設定結束 */}
